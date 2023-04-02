@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/padding_oracle/obj
+/.vs/padding_oracle/FileContentIndex
