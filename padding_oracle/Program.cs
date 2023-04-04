@@ -129,7 +129,6 @@ namespace padding_oracle
             // Now let's try tampering with the previous block
             Array.Copy(enc_bytes, test, test.Length);
             offset = test.Length - 17;
-            int original_value = test[offset];
             int cipherPrime = 0;
             byte[] clear_text= new byte[16];
 
@@ -140,8 +139,9 @@ namespace padding_oracle
                     bool found = false;
                     for (int i = 0; i < 256; ++i)
                     {
-                        if (i == original_value)
-                            continue;
+                        // Have to test all the values, even 
+                        // the original value, else it doesn't work where
+                        // padding = 1
 
                         test[offset] = (byte)i;
                         if (enc.TryDecrypt(test))
